@@ -10,6 +10,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
+import Box from '@mui/material/Box';
 
 const theme = createTheme({
   palette: {
@@ -60,14 +61,17 @@ function App() {
       <CssBaseline />
       <Router>
         <Navigation />
-        <Container maxWidth="lg" sx={{ mt: 4 }}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/schemes" element={<Schemes />} />
-            <Route path="/firmwares" element={<Firmwares />} />
-            <Route path="/learning" element={<Learning />} />
-          </Routes>
-        </Container>
+        {/* Контейнер только для контента, header вне контейнера */}
+        <Box sx={{ flex: 1, width: '100%' }}>
+          <Container maxWidth="lg" sx={{ mt: 4 }}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/schemes" element={<Schemes />} />
+              <Route path="/firmwares" element={<Firmwares />} />
+              <Route path="/learning" element={<Learning />} />
+            </Routes>
+          </Container>
+        </Box>
       </Router>
     </ThemeProvider>
   );
